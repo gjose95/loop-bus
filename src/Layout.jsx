@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 function Layout ({content}) {
   const [activePage, setActivePage] = useState("Main");
+  const goToHome = () => setActivePage("Main");
 
   return <div>
     {/* nav start  */}
@@ -24,8 +25,11 @@ function Layout ({content}) {
       </div>
     {/* nav end */}
     <div className="main-body">
-      { content[activePage]() }
+      { content[activePage]({
+        goToHome
+      }) }
     </div>
+    <p className="footnote">Contribute to this on <a href="http://github.com/fizal619/loop-bus">GitHub</a>.</p>
   </div>
 }
 
